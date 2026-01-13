@@ -56,7 +56,7 @@ export default function Page() {
       <div className="max-w-7xl mx-auto space-y-16">
         <header className="space-y-8">
           <div>
-            <h1 className="text-5xl font-bold text-white mb-2">Sur-Koin</h1>
+            <h1 className="text-5xl font-bold text-white mb-2">DolarCriptove</h1>
             <p className="text-zinc-500 text-lg">Radar cripto Venezuela</p>
           </div>
 
