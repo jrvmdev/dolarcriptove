@@ -1,9 +1,113 @@
 @import "tailwindcss";
 
-@source "../../src/**/*.{js,ts,jsx,tsx,mdx}";
+/* =========================
+   DESIGN TOKENS
+   ========================= */
 
-html, body {
+:root {
+  /* Backgrounds */
+  --background: #afc9f3;          /* azul fintech suave */
+  --surface: #e8f1f3;
+
+  /* Text */
+  --text: #0f172a;                /* slate-900 */
+  --text-muted: #64748b;          /* slate-500 */
+
+  /* Borders */
+  --border: #e2e8f0;              /* slate-200 */
+
+  /* Accents */
+  --accent: #10b981;              /* emerald */
+  --success: #22c55e;
+  --danger: #ef4444;
+}
+
+.dark {
+  /* Backgrounds */
+  --background: #000000;          /* slate-950 */
+  --surface: #26272f;
+
+  /* Text */
+  --text: #c7c7c6;                /* zinc-200 */
+  --text-muted: #94a3b8;          /* slate-400 */
+
+  /* Borders */
+  --border: #1e293b;              /* slate-800 */
+
+  /* Accents */
+  --accent: #10b981;
+  --success: #22c55e;
+  --danger: #ef4444;
+}
+
+/* =========================
+   BASE
+   ========================= */
+
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: system-ui, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* =========================
+   TAILWIND TOKEN MAPPING
+   ========================= */
+
+@layer utilities {
+  .bg-background-light {
+    background-color: var(--background);
+  }
+  .bg-background-dark {
+    background-color: var(--background);
+  }
+
+  .bg-surface-light {
+    background-color: var(--surface);
+  }
+  .bg-surface-dark {
+    background-color: var(--surface);
+  }
+
+  .text-text-light {
+    color: var(--text);
+  }
+  .text-text-dark {
+    color: var(--text);
+  }
+
+  .text-text-muted {
+    color: var(--text-muted);
+  }
+
+  .border-border-light {
+    border-color: var(--border);
+  }
+  .border-border-dark {
+    border-color: var(--border);
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+  .bg-accent {
+    background-color: var(--accent);
+  }
+
+  .text-success {
+    color: var(--success);
+  }
+  .bg-success {
+    background-color: var(--success);
+  }
+
+  .text-danger {
+    color: var(--danger);
+  }
+  .bg-danger {
+    background-color: var(--danger);
+  }
 }

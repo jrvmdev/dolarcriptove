@@ -7,8 +7,8 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          light: "#f1f3f6",   // blanco Fiwin real
-          dark: "#0b0e11",
+          light: "#e9eef5",   // mas azul, menos blanco
+          dark: "#0b01220",
         },
         surface: {
           light: "#f8fafc",   // NO blanco puro

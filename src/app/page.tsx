@@ -45,56 +45,82 @@ export default function Page() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-amber-500 text-lg animate-pulse">Cargando...</div>
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="text-accent text-lg animate-pulse">
+          Cargando...
+        </div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen px-6 py-12 bg-black">
-      <div className="max-w-7xl mx-auto space-y-16">
-        <header className="space-y-8">
+    <main className="py-12">
+      <div className="max-w-7xl mx-auto px-6 space-y-16">
+
+        {/* HEADER */}
+        <header className="space-y-6">
           <div>
-            <h1 className="text-5xl font-bold text-white mb-2">DolarCriptove</h1>
-            <p className="text-zinc-500 text-lg">Radar cripto Venezuela</p>
+            <h1 className="text-5xl font-bold mb-2">
+              DolarCriptoVE
+            </h1>
+            <p className="text-text-muted text-lg">
+              Radar cripto Venezuela
+            </p>
           </div>
 
+          {/* USDT / VES */}
           {ves && (
-            <div className="relative overflow-hidden rounded-3xl border border-slate-800 p-8 bg-zinc-950">
+            <section
+              className="
+                relative overflow-hidden rounded-3xl p-8
+                border border-border-light dark:border-border-dark
+                bg-surface-light dark:bg-surface-dark
+              "
+            >
               <div className="relative z-10">
-                <div className="text-sm font-medium text-slate-500 mb-2 uppercase tracking-wider">
+                <div className="text-sm font-medium text-text-muted mb-2 uppercase tracking-wider">
                   🇻🇪 USDT / VES
                 </div>
 
                 <div className="flex items-baseline gap-3 mb-8">
-                  <div className="text-5xl font-bold text-white">
+                  <div className="text-5xl font-bold">
                     {ves.mid.toFixed(2)}
                   </div>
-                  <div className="text-lg text-slate-400">Bs · Precio medio</div>
+                  <div className="text-lg text-text-muted">
+                    Bs · Precio medio
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {ves.bands.map((b) => (
                     <div
                       key={b.band}
-                      className="bg-slate-800 bg-opacity-50 backdrop-blur rounded-2xl p-5 border border-slate-700"
+                      className="
+                        rounded-2xl p-5
+                        border border-border-light dark:border-border-dark
+                        bg-background-light/60 dark:bg-background-dark/60
+                        backdrop-blur
+                      "
                     >
-                      <div className="text-xs text-slate-400 font-medium mb-4 text-center">
+                      <div className="text-xs text-text-muted font-medium mb-4 text-center">
                         {b.band} USDT
                       </div>
 
                       <div className="space-y-3">
-                        <div className="bg-emerald-900 bg-opacity-20 rounded-xl px-3 py-2 border border-emerald-700 border-opacity-30">
-                          <div className="text-xs text-emerald-400 mb-1">Vender USDT</div>
-                          <div className="text-lg font-bold text-emerald-300">
+                        <div className="rounded-xl px-3 py-2 border border-success/30 bg-success/10">
+                          <div className="text-xs text-success mb-1">
+                            Vender USDT
+                          </div>
+                          <div className="text-lg font-bold">
                             {b.buy.toFixed(2)} Bs
                           </div>
                         </div>
 
-                        <div className="bg-rose-900 bg-opacity-20 rounded-xl px-3 py-2 border border-rose-700 border-opacity-30">
-                          <div className="text-xs text-rose-400 mb-1">Comprar USDT</div>
-                          <div className="text-lg font-bold text-rose-300">
+                        <div className="rounded-xl px-3 py-2 border border-danger/30 bg-danger/10">
+                          <div className="text-xs text-danger mb-1">
+                            Comprar USDT
+                          </div>
+                          <div className="text-lg font-bold">
                             {b.sell.toFixed(2)} Bs
                           </div>
                         </div>
@@ -104,13 +130,14 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full blur-3xl opacity-5" />
-            </div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl opacity-5" />
+            </section>
           )}
         </header>
 
+        {/* MARKET */}
         <section>
-          <h2 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">
+          <h2 className="text-xs font-bold uppercase tracking-widest mb-6 text-text-muted">
             Top 10 Mercado Global
           </h2>
 
@@ -121,17 +148,22 @@ export default function Page() {
               return (
                 <div
                   key={c.id}
-                  className="group relative overflow-hidden bg-slate-800 bg-opacity-70 backdrop-blur border border-slate-700 hover:border-slate-600 rounded-2xl p-4 transition-all duration-300"
+                  className="
+                    group relative overflow-hidden rounded-2xl p-4
+                    border border-border-light dark:border-border-dark
+                    bg-surface-light dark:bg-surface-dark
+                    transition
+                  "
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <div className="text-base font-bold text-slate-100">
+                    <div className="text-base font-bold">
                       {c.symbol.toUpperCase()}
                     </div>
                     <div
                       className={`text-xs font-bold px-2 py-1 rounded-full ${
                         up
-                          ? "bg-emerald-500 bg-opacity-10 text-emerald-400"
-                          : "bg-rose-500 bg-opacity-10 text-rose-400"
+                          ? "bg-success/10 text-success"
+                          : "bg-danger/10 text-danger"
                       }`}
                     >
                       {up ? "+" : ""}
@@ -141,24 +173,32 @@ export default function Page() {
 
                   <div className="h-16 mb-3 -mx-2">
                     <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart data={c.sparkline_in_7d.price.map((v) => ({ v }))}>
+                      <AreaChart
+                        data={c.sparkline_in_7d.price.map((v) => ({ v }))}
+                      >
                         <defs>
-                          <linearGradient id={`grad-${c.id}`} x1="0" y1="0" x2="0" y2="1">
+                          <linearGradient
+                            id={`grad-${c.id}`}
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                          >
                             <stop
                               offset="0%"
-                              stopColor={up ? "#10b981" : "#ef4444"}
+                              stopColor={up ? "#22c55e" : "#ef4444"}
                               stopOpacity={0.4}
                             />
                             <stop
                               offset="100%"
-                              stopColor={up ? "#10b981" : "#ef4444"}
+                              stopColor={up ? "#22c55e" : "#ef4444"}
                               stopOpacity={0}
                             />
                           </linearGradient>
                         </defs>
                         <Area
                           dataKey="v"
-                          stroke={up ? "#10b981" : "#ef4444"}
+                          stroke={up ? "#22c55e" : "#ef4444"}
                           fill={`url(#grad-${c.id})`}
                           strokeWidth={2}
                           dot={false}
@@ -167,23 +207,20 @@ export default function Page() {
                     </ResponsiveContainer>
                   </div>
 
-                  <div className="text-xl font-bold text-slate-100 mb-1">
+                  <div className="text-xl font-bold mb-1">
                     ${c.current_price.toLocaleString()}
                   </div>
 
-                  <div className="text-xs text-slate-500">
+                  <div className="text-xs text-text-muted">
                     MCap ${(c.market_cap / 1e9).toFixed(1)}B
                   </div>
-
-                  <div className="absolute inset-0 bg-linear
-                  -to-br from-sky-500 to-transparent opacity-0 group-hover:opacity-5 transition-opacity" />
                 </div>
               );
             })}
           </div>
         </section>
 
-        <footer className="pt-8 text-center text-xs text-slate-600">
+        <footer className="pt-8 text-center text-xs text-text-muted">
           Datos en tiempo real · CoinGecko API
         </footer>
       </div>

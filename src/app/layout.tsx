@@ -1,45 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ThemeProvider from "./theme-provider";
 
 export const metadata: Metadata = {
   title: "DolarCriptoVE | Radar Cripto Venezuela",
   description: "Cotización USDT/VES en tiempo real y mercado cripto global",
   manifest: "/manifest.json",
   themeColor: "#10b981",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "black-translucent",
-    title: "DolarCriptoVE",
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/icon-192.png",
-  },
-  openGraph: {
-    title: "DolarCriptoVE",
-    description: "Cotización USDT/VES en tiempo real y mercado cripto global",
-    url: "https://dolarcriptove-xxxx.vercel.app",
-    siteName: "DolarCriptoVE",
-    images: [
-      {
-        url: "https://dolarcriptove-xxxx.vercel.app/og-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: "es_VE",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "DolarCriptoVE",
-    description: "Cotización USDT/VES en tiempo real y mercado cripto global",
-    images: ["https://dolarcriptove-xxxx.vercel.app/og-image.png"],
-  },
 };
 
 export default function RootLayout({
@@ -48,9 +15,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className="min-h-screen bg-slate-900 text-slate-200 antialiased">
-        {children}
+    <html lang="es" suppressHydrationWarning>
+      <body
+        className="
+          min-h-screen
+          bg-[#f4f7fb] text-[#0f172a]
+          dark:bg-[#0b0e11] dark:text-[#e5e7eb]
+          antialiased
+        "
+      >
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
